@@ -6,6 +6,7 @@ const port = process.env.PORT || 4000;
 const cors = require('cors');
 const MongoStore = require('connect-mongo');
 const dbo = require('./db/conn');
+const registerRoutes = require('./routes/register');
 app.use(cors(
     {
         origin: "http://localhost:3000",
@@ -25,7 +26,7 @@ app.use(session({
     })
 }));
 app.use(express.json());
-
+app.use('/', registerRoutes);
 app.get('/', (req, res) => {
     res.send("Hello World");
 });
