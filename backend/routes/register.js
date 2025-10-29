@@ -40,6 +40,7 @@ registerRoutes.route('/register').post(async (req, res) => {
             salt: salt,
         };
         const result = await db_connect.collection('users').insertOne(userObject);
+        req.session.user = { username: userObject.username};
         res.status(201).json({ message: "User registered successfully", userId: result.insertedId });
     }catch(err){
         console.error(err);
