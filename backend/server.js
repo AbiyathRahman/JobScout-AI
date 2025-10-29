@@ -6,7 +6,10 @@ const port = process.env.PORT || 4000;
 const cors = require('cors');
 const MongoStore = require('connect-mongo');
 const dbo = require('./db/conn');
+// routes
 const registerRoutes = require('./routes/register');
+const loginRoutes = require('./routes/login');
+const homeRoute = require('./routes/home');
 app.use(cors(
     {
         origin: "http://localhost:3000",
@@ -27,9 +30,12 @@ app.use(session({
 }));
 app.use(express.json());
 app.use('/', registerRoutes);
+app.use('/', loginRoutes);
+app.use('/', homeRoute);
 app.get('/', (req, res) => {
     res.send("Hello World");
 });
+
 
 app.listen(port, () => {
     dbo.connectToServer(function(err){
