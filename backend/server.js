@@ -10,6 +10,7 @@ const dbo = require('./db/conn');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const homeRoute = require('./routes/home');
+const analyzeRoute = require('./routes/analyze');
 app.use(cors(
     {
         origin: "http://localhost:3000",
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use('/', registerRoutes);
 app.use('/', loginRoutes);
 app.use('/', homeRoute);
+app.use('/', analyzeRoute);
 app.get('/', (req, res) => {
     res.send("Hello World");
 });
