@@ -1,6 +1,5 @@
 const { BedrockRuntimeClient, InvokeModelCommand } = require('@aws-sdk/client-bedrock-runtime');
 require('dotenv').config({ path: './config.env' });
-const dbo = require('../db/conn');
 const util = require('util');
 
 // Initialize Bedrock client
